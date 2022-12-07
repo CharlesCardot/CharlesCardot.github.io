@@ -7,17 +7,12 @@ tags: [Python, Gaussian, Lorentzian, Convolutions, Broadening]
 use_math: true
 ---
 
-$ 2+2 $
-
 In science, we often have to deal with distributions. Whether there is some a distribution of noise in our data, or some underlying physics influencing our measurements, we will always have to contend with these background processes. This is often discussed in terms of a convolutions, where two processes mix together at every point (usually one process you actually care about and another process that you couldn't care less about). 
 
-$ 2+2 $
-
-
-Mathematically a convolution is defined as $ [f \star g](x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau $
+Mathematically a convolution is defined as $ \[f \star g\](x) = \int_{-\infty}^{\infty} f(\tau)g(x-\tau) d\tau $
 They are a well studied mathematical phenomena with many creative animations and explanations that can be found elsewhere ([link1](https://mathworld.wolfram.com/Convolution.html), [link2](https://www.youtube.com/watch?v=KuXjwB4LzSA&ab_channel=3Blue1Brown)). In the context of measured data, we usually use the word "broadening" instead of convolution, but they effectively mean the same thing. Usually our data is convolved with some other distribution which ends up broadening peaks and making any features fuzzier. Given this, being able to simulate broadening is critical for comparing theory to experiment, and also is generally helpful for understanding what is going on within our data. 
 
-In this post I will discuss how to implement broadening within Python for a few situations, as well as common mistakes that you will want to watch out for. All of the code I discuss is available **update this link** [here](https://github.com/CharlesCardot), and I *highly* recommend you take the chance to experiment with it before using it in your own projects (learn from my mistakes).
+In this post I will discuss how to implement broadening within Python for a few situations, as well as common mistakes that you will want to watch out for. All of the code I discuss is available [here](https://github.com/CharlesCardot/BroadeningTutorial), and I *highly* recommend you take the time to experiment with it before using it in your own projects (learn from my mistakes).
 
 ## Introduction
 
@@ -196,7 +191,7 @@ Let's pause here to acknowledge two things.
 
 The fastest implementation that I have ever seen involves the numpy.convolve function (shown below), and it is the one that I recommend using if you are ever working with very large data sets. However, it has the drawback of just being someone else's convolve function, without a lot of transparency. If you ever have an issue with your broadening and want to do some testing, you may have to go digging around in the numpy source code.
 
-### Numpy Convolve Method
+### Numpy Convolve Method (Fastest)
 
 ```
 def LorentzianBroadening_convolve(arr, FWHM):
@@ -251,7 +246,7 @@ plt.show()
 Okay, so now we know how to calculate the convolution of two functions within Python. How can we check our work? 
 
 ### Normalization
-In general a convolution $(f \star g)(x)$ will have an area equal to the product of areas of the two functions being convolved ($f(x)$ and $g(x)$) ([proof](https://math.stackexchange.com/questions/3920639/is-convolution-area-preserving)). This is simple enough to check, so let's do so.
+In general a convolution $\[f \star g\](x)$ will have an area equal to the product of areas of the two functions being convolved ($f(x)$ and $g(x)$) ([proof](https://math.stackexchange.com/questions/3920639/is-convolution-area-preserving)). This is simple enough to check, so let's do so.
 
 ```
 fig, ax = plt.subplots(1,3, figsize=(12, 4))
