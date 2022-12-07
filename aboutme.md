@@ -1,16 +1,53 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: My CV but in paragraph format
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+## Contents
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+ 1. [Education](#education)
+ 2. [Technical Skills](#technical-skills)
+ 3. [Other Interests](#other-interests)  
 
-What else do you need?
+------
+## Education
+![PhD](https://img.shields.io/badge/Ph.D.-Physics%20(Condensed%20Matter)-blue?style=flat-square) ![BS](https://img.shields.io/badge/B.S.-Physics-blue?style=flat-square)
+- **Ph.D.** in Physics (Condensed Matter)
+  - 2021 - Present, University of Washington
+    - Lab of Gerald T. Seidler ([Lab Page](http://faculty.washington.edu/seidler/index.html)) and John J. Rehr ([Lab Page](http://faculty.washington.edu/jjr/))
+    - National Science Foundation Graduate Research Fellowship (awarded in 2022)
+    - Miller Physics Scholarship (awarded in 2022)
+    - UW Departmental Fellowship (awarded in 2021)
+- **B.S.** in Physics
+  - 2017 - 2020, Georgia Institute of Technology
+    - iNCRedible Scholarship (awarded in 2018), Joyce M. and Glenn A. Burdick Prize (awarded in 2018)
+    - Faculty Honors List (all semesters)  
+    - Zell Miller Scholarship (all semesters)
 
-### My story
+------
+## Technical Skills
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+#### Programming
+
+**Scientific computing:** ![Python](https://img.shields.io/badge/Python-proficient-success) ![Linux/BASH](https://img.shields.io/badge/Linux/BASH-proficient-success) ![Lua](https://img.shields.io/badge/Lua-intermediate-yellowgreen) ![Mathematica](https://img.shields.io/badge/Mathematica-intermediate-yellowgreen) ![C/C++](https://img.shields.io/badge/C/C++-novice-yellow)
+
+**Markup:** ![Latex](https://img.shields.io/badge/LaTex-proficient-success) ![md](https://img.shields.io/badge/markdown-proficient-success)
+
+**Version control:** ![git](https://img.shields.io/badge/git-intermediate-yellowgreen)
+![GitHub](https://img.shields.io/badge/GitHub-intermediate-yellowgreen)
+
+#### Quantum Simulation Software
+
+**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-proficient-success) ![Abinit](https://img.shields.io/badge/Abinit-novice-success) ![FEFF](https://img.shields.io/badge/FEFF-novice-success)
+
+**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![Wannier-90](https://img.shields.io/badge/Wannier-90-novice-success)
+
+------
+## Other Interests
+
+I am firm believer that knowledge is something that should be accessible to everyone, freely and on demand. I have made it my mission to address this in two ways: By creating and contributing to open-source software/content, and by participating in direct, hands-on educational outreach efforts. 
+
+At my undergrad I took over the job of organizing the Society of Physics Students outreach program. This involved training students on our physics demo show and traveling to local schools in the Atlanta area to perform for k-12 audiences. I also spearheaded the development of a new Physics Field Day program that provided a full day of physics based activities for high schoolers, including a mock AP Exam (graded with feedback), a lesson on Fermi problems, multiple lectures from student researchers and professors, and a hands on optics experiment.
+
+During my time in graduate school I have developed an open-source resource workbook on the topic of x-ray spectroscopy, which provides a series of 15 lessons for beginners in the field. X-ray spectroscopy is a powerful tool with wide applications, leading to a plethora of new users every year, all of whom need training. There are many excellent introductory textbooks, to which this workbook acts as a supplement, with multiple fun and interactive problems that allow users to solidify their understanding of the fundamentals. 

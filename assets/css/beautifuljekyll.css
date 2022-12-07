@@ -699,9 +699,9 @@ nav.top-nav-short-permanent ~ header > .intro-header.big-img {
   font-weight: 400;
 }
 .intro-header.big-img .page-heading hr {
-  box-shadow: 1px 1px 3px #000;
-  -webkit-box-shadow: 1px 1px 3px #000;
-  -moz-box-shadow: 1px 1px 3px #000;
+  box-shadow: 3px 3px 9px #000;
+  -webkit-box-shadow: 3px 3px 9px #000;
+  -moz-box-shadow: 3px 3px 9px #000;
 }
 .intro-header.big-img .post-heading .post-meta {
   color: #EEE;
