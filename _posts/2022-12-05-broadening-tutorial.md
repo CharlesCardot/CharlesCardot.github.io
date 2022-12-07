@@ -2,6 +2,8 @@
 layout: post
 title: A tutorial on broadening in python
 subtitle: Explore convolutions and common pitfalls
+cover-img: /img/posts/Images_BroadeningTutorial/GLV_example_curves.png
+thumbnail-img: /img/posts/Images_BroadeningTutorial/GLV_example_curves.png
 tags: [Python, Gaussian, Lorentzian, Convolutions, Broadening]
 ---
 
