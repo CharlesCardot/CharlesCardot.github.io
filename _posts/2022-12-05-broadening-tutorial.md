@@ -4,9 +4,12 @@ title: A tutorial on broadening in python
 subtitle: Explore convolutions and common pitfalls
 thumbnail-img: /img/posts/Images_BroadeningTutorial/GLV_example_curves.png
 tags: [Python, Gaussian, Lorentzian, Convolutions, Broadening]
+use_math: true
 ---
 
 In science, we often have to deal with distributions. Whether there is some a distribution of noise in our data, or some underlying physics influencing our measurements, we will always have to contend with these background processes. This is often discussed in terms of a convolutions, where two processes mix together at every point (usually one process you actually care about and another process that you couldn't care less about). 
+
+$ 2+2 $
 
 {% raw %}
  $$a^2 + b^2 = c^2$$
