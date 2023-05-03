@@ -39,9 +39,9 @@ subtitle: My CV but in paragraph format
 
 #### Quantum Simulation Software
 
-**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-proficient-success) ![Abinit](https://img.shields.io/badge/Abinit-novice-success) ![FEFF](https://img.shields.io/badge/FEFF-novice-success)
+**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-intermediate-yellowgreen) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-yellowgreen) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
 
-**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![Wannier-90](https://img.shields.io/badge/Wannier-90-novice-success)
+**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![Wannier90](https://img.shields.io/badge/Wannier90-novice-yellow)
 
 ------
 ## Other Interests
@@ -50,4 +50,4 @@ I am firm believer that knowledge is something that should be accessible to ever
 
 At my undergrad I took over the job of organizing the Society of Physics Students outreach program. This involved training students on our physics demo show and traveling to local schools in the Atlanta area to perform for k-12 audiences. I also spearheaded the development of a new Physics Field Day program that provided a full day of physics based activities for high schoolers, including a mock AP Exam (graded with feedback), a lesson on Fermi problems, multiple lectures from student researchers and professors, and a hands on optics experiment.
 
-During my time in graduate school I have developed an open-source resource workbook on the topic of x-ray spectroscopy, which provides a series of 15 lessons for beginners in the field. X-ray spectroscopy is a powerful tool with wide applications, leading to a plethora of new users every year, all of whom need training. There are many excellent introductory textbooks, to which this workbook acts as a supplement, with multiple fun and interactive problems that allow users to solidify their understanding of the fundamentals. 
+During my time in graduate school I have developed an open-source resource workbook on the topic of x-ray spectroscopy, which provides a series of 16 lessons for beginners in the field. X-ray spectroscopy is a powerful tool with wide applications, leading to a plethora of new users every year, all of whom need training. There are many excellent introductory textbooks, to which this workbook acts as a supplement, with multiple fun and interactive problems that allow users to solidify their understanding of the fundamentals. 

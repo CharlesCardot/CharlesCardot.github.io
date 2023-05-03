@@ -25,7 +25,7 @@ I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ec
 [![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1fsOaab3c4haMMhU3N1OT4449ScbG-2KK/edit?usp=share_link&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ### Publications
-- **Under Preparation**: <u>Charles Cardot</u>, Gerald T. Seidler, Josh J. Kas, *Exploration of ab-initio calculations for 3d transition metal Kα X-ray Emission Spectra (XES)*
+- **Submitted**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://arxiv.org/abs/2304.14582
 - **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*
 
 ### Conferences and Talks
