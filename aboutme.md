@@ -37,11 +37,13 @@ subtitle: My CV but in paragraph format
 **Version control:** ![git](https://img.shields.io/badge/git-intermediate-green)
 ![GitHub](https://img.shields.io/badge/GitHub-intermediate-green)
 
-#### Quantum Simulation Software
+#### Scientific Software
 
-**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-intermediate-green) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-green) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
+**Electronic Structure Codes:** ![FPLO](https://img.shields.io/badge/markdown-proficient-success) ![Siesta](https://img.shields.io/badge/Siesta-intermediate-green) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-green) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
 
-**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![Wannier90](https://img.shields.io/badge/Wannier90-novice-yellow)
+**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) 
+
+**Other:** ![Wannier90](https://img.shields.io/badge/Wannier90-novice-yellow)
 
 ------
 ## Other Interests
