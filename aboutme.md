@@ -30,16 +30,16 @@ subtitle: My CV but in paragraph format
 
 #### Programming
 
-**Scientific computing:** ![Python](https://img.shields.io/badge/Python-proficient-success) ![Linux/BASH](https://img.shields.io/badge/Linux/BASH-proficient-success) ![Lua](https://img.shields.io/badge/Lua-intermediate-yellowgreen) ![Mathematica](https://img.shields.io/badge/Mathematica-intermediate-yellowgreen) ![C/C++](https://img.shields.io/badge/C/C++-novice-yellow)
+**Scientific computing:** ![Python](https://img.shields.io/badge/Python-proficient-success) ![Linux/BASH](https://img.shields.io/badge/Linux/BASH-proficient-success) ![Lua](https://img.shields.io/badge/Lua-intermediate-green) ![Mathematica](https://img.shields.io/badge/Mathematica-intermediate-green) ![C/C++](https://img.shields.io/badge/C/C++-novice-yellow)
 
 **Markup:** ![Latex](https://img.shields.io/badge/LaTex-proficient-success) ![md](https://img.shields.io/badge/markdown-proficient-success)
 
-**Version control:** ![git](https://img.shields.io/badge/git-intermediate-yellowgreen)
-![GitHub](https://img.shields.io/badge/GitHub-intermediate-yellowgreen)
+**Version control:** ![git](https://img.shields.io/badge/git-intermediate-green)
+![GitHub](https://img.shields.io/badge/GitHub-intermediate-green)
 
 #### Quantum Simulation Software
 
-**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-intermediate-yellowgreen) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-yellowgreen) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
+**Electronic Structure Codes:** ![Siesta](https://img.shields.io/badge/Siesta-intermediate-green) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-green) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
 
 **Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![Wannier90](https://img.shields.io/badge/Wannier90-novice-yellow)
 
