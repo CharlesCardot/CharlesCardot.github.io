@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Charles A. Cardot
-subtitle: Computational Physicist and Cat Lover.
+subtitle: Computational physicist with a love for cats.
 use-site-title: true
 cover-img:
 
@@ -10,6 +10,8 @@ cover-img:
     - "/img/big-img/FPLO_bandstructure.png" : "Band Structure and Projected Density of States"
     - "/img/big-img/charles_physics_demos_zoom.png" : "Van Der Graaf Generator Physics Demo"
     - "/img/big-img/quanty_code_snippet.png" : "Quanty Code Snippet"
+    - "/img/big-img/crystalanalyzer_reflection_energies_pythonXRT.png" : "Johann Error in Python XRT"
+    - "/img/big-img/xraytracingwithpythonxrt.png" : "X-ray Tracing with Python XRT"
 ---
 
 ### Welcome
