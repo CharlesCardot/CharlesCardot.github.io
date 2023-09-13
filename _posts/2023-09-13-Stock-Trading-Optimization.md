@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Developing My Own Stock Trading Strategy (Data Mining, Algorithm Design, and Optimization with GAs)
+title: Developing My Own Stock Trading Algorithm
 subtitle: How hard could it be?
 thumbnail-img: /img/posts/Images_LongShortPost/GLV_example_curves.png
-tags: [Python, Data Visualization, Pandas, Stock Market, Genetic Algorithms]
+tags: [Python, Data Mining, Algorithm Design, Data Visualization, Financial Literacy, Stock Markets, Genetic Algorithms]
 use_math: true
 ---
 
@@ -144,7 +144,7 @@ market_df = pd.concat([market_df_2010to2016, market_df_2016to2023])
 display.display((market_df.head()))
 ```
 
-| open | high |	low | close | volume |
+|index | open | high |	low | close | volume |
 |:----:|:----:|:---:|:-----:|:------:|
 | 2010-07-01 09:30:00 | 80.639 | 80.754 | 80.393 | 80.502 |	1661899 |
 | 2010-07-01 09:31:00 | 80.585 | 80.668 | 80.362 | 80.485 |	797772  |
@@ -172,6 +172,7 @@ for date in market_df.index.date:
 # Sort dataframe into trading days
 market_by_days = [market_df[market_df.index.date == date] for date in trading_days]
 ```
+
 
 ```
 import pickle
@@ -231,6 +232,7 @@ for start_time in times:
             row.append(np.NaN)
     returns_arr.append(row)
 ```
+
 
 ```
 from matplotlib.colors import LinearSegmentedColormap
@@ -303,6 +305,7 @@ for start_time in times:
             row.append(np.NaN)
     abs_returns_arr.append(row)
 ```
+
 
 ```
 plt.figure(figsize=(10, 8))
@@ -384,6 +387,7 @@ for start_time in times:
     abs_returns_arr.append(row)
 ```
 
+
 ```
 y_30 = []
 times_30 = [t.strftime('%H:%M') + " to " + times[i+1].strftime('%H:%M') for i, t in enumerate(times) if i != len(times) - 1]
@@ -455,7 +459,302 @@ Visualizing how these rules play out is much easier with a little simulation, se
   </video>
 </p>
 
+In the above simulation we have taken a particular day from our dataset, opened a long and short position, and set an `x_percent_loss` and `y_percent_gain` value. The `x_percent_loss` is the percentage loss that either the long or short position must hit before being sold. The times at which the account value is flat is when either both the long and short positions are being held simultaneously, or both positions have been exited. In this example, the price of the S&P 500 increases from the opening value and hits the *short stop-loss* first. The short position gets sold, and the long position is held until it reaches the `y_percent_gain` value, leading to a nice net 1.2% profit for the day.
 
+**This is of course a cherry picked example, but it shows the potential of this idea.**
+
+The main downside of this approach is that that any sideways moving days, where there isn't a large price movement up or down, runs the risk of hitting both the long and short stop loss, resulting in a net loss for the day. We need it to hit a take profit value so that the algorithm can sell before any reversals. However, we don't want to set the take profit value too low, otherwise we might miss out on the upside of any high volatility days. There are some methods we can use to address this, and it's best to lay out our proposed algorithm as a series of steps/rules.
+
+### Long-Short Strategy
+
+1. Open a long and short position simultaneously at the start of trading day.
+2. If either position loses x percent, sell the position. 
+3. If the winning position reaches some threshold, move the remaining stop loss value to a breakeven position.
+4. If the winning position gains y percent, implement a trailing stop loss.
+5. At the end of day close any remaining positions.
+
+Rule 3 helps cut down on the risk of a losing day by moving the stop loss of the winning position to be a price where, if it is hit, then the profit from the winning position cancels out the loss from the loosing position. Rule 4 allows us to have some trailing stop loss that will prevent us from taking profit too early on big swing days. Finally rule 5 just prevents us from holding any positions overnight, allowing us to avoid any big market moves that might jump over our stop loss values and lead to more losses than we're comfortable taking.
+
+Let's see what this looks like simulated.
+
+```
+from matplotlib.animation import FuncAnimation
+
+def animate_simulation(market_day, 
+                       x_percent_loss = -0.4 / 100, 
+                       y_percent_gain = 1.6 / 100, 
+                       be_threshold = 0.8 / 100, 
+                       tslp = 0.4 / 100,
+                       frames = 390,
+                       interval = 50):
+    """
+    Visual animation of the algorithm being executed.
+
+    Parameters
+    ----------
+    market_day: This index selects a specific day from the market_by_days list
+    x_percent_loss: The ppc that either position is alowed to lose, after which point it gets sold.
+                    This sets the starting stop loss values.
+    y_percent_gain: Equivalent to take profit, once this ppc is reached a trailing stop less gets implemented
+    be_threshold: The ppc which once reached will trigger the stop loss on the winning position to 
+                  be moved to a break even position
+    tslp: The trailing stop loss percentage, this is measured from the high peak or lowest trough of the day,
+          depending on if the remaining position is long or short.
+    frames: Integer umber of frames to animate (each frame is equivalent to 1 minute)
+    interval: Integer delay between frames in milliseconds
+    """
+
+    df = market_by_days[market_day]
+            
+    open_price = df.iloc[0]['average']  # Open position at the first minute's average price
+
+    betting_value = 2000 / 2
+
+    long_position = {'open_value': betting_value, 'current_value': betting_value}
+    short_position = {'open_value': betting_value, 'current_value': betting_value}
+    value_of_investment = [2000]
+
+    sl_value = betting_value * (1 + x_percent_loss) # stop-loss value
+    tp_value = betting_value * (1 + y_percent_gain) # take-profit value
+    be_value = betting_value * (1 + be_threshold) # breakeven threshold
+    final_bet_value = 0
+    trailing_sl_triggered = False
+    be_value_triggered = False
+
+    prices = df["average"].tolist()
+
+    sl_positions = [[],[]] # keys/indexs list, tslp values list
+    be_trigger = None # Key value for breakeven trigger being reached
+    for key, current_price in enumerate(prices):
+
+        if key == 0:
+            continue
+
+        temp_value_of_investment = final_bet_value
+        if long_position:
+            long_position['current_value'] = (1 + (current_price - open_price) / open_price) * long_position['open_value']
+            temp_value_of_investment += long_position['current_value']
+        if short_position:
+            short_position['current_value'] = (1 + -1 * (current_price - open_price) / open_price) * short_position['open_value']
+            temp_value_of_investment += short_position['current_value']
+        value_of_investment.append(temp_value_of_investment)
+
+        # Check for stop loss condition reached on long position
+        if long_position and long_position['current_value'] <= sl_value:
+            final_bet_value += sl_value
+            value_of_investment[-1] += sl_value - long_position['current_value']
+            long_position = None
+            if short_position:
+                first_position_exit = key
+            else:
+                second_position_exit = key
+        # Check for stop loss condition reached on short position
+        elif short_position and short_position['current_value'] <= sl_value:
+            final_bet_value += sl_value
+            value_of_investment[-1] += sl_value - short_position['current_value']
+            short_position = None
+            if long_position:
+                first_position_exit = key
+            else:
+                second_position_exit = key
+
+
+        # Trailing stop loss management
+        if not trailing_sl_triggered:
+            # Check for trailing stop condition reached on long position
+            if long_position and long_position['current_value'] >= tp_value:
+                sl_value = long_position['current_value'] * (1 - tslp)
+                trailing_sl_triggered = True
+                sl_positions[0].append(key)
+                sl_positions[1].append(current_price * (1 - tslp))
+            # Check for trailing stop condition reached on short position
+            elif short_position and short_position['current_value'] >= tp_value:
+                sl_value = short_position['current_value'] * (1 - tslp)
+                trailing_sl_triggered = True
+                sl_positions[0].append(key)
+                sl_positions[1].append(current_price * (1 + tslp))
+        else:
+            if long_position and sl_value < long_position['current_value'] * (1 - tslp):
+                sl_value = long_position['current_value'] * (1 - tslp)
+                sl_positions[0].append(key)
+                sl_positions[1].append(current_price * (1 - tslp))
+            elif short_position and sl_value < short_position['current_value'] * (1 - tslp):
+                sl_value = short_position['current_value'] * (1 - tslp)
+                sl_positions[0].append(key)
+                sl_positions[1].append(current_price * (1 + tslp))
+
+        # Condition for moving sl_value to breakeven after one of the positions has stopped out
+        if be_value_triggered == False:
+            if long_position is not None and short_position is None and long_position['current_value'] >= be_value:
+                sl_value = betting_value * (1 + -1 * x_percent_loss)
+                be_trigger = key
+                be_value_triggered = True
+            if short_position is not None and long_position is None and short_position['current_value'] >= be_value:
+                sl_value = betting_value * (1 + -1 * x_percent_loss)
+                be_trigger = key
+                be_value_triggered = True
+
+
+    if long_position or short_position:
+        second_position_exit = key
+
+    x = np.arange(len(df))
+
+    fig, axs = plt.subplots(2, 1, figsize=(6, 9), sharex=True)
+
+    top_plot = axs[0].plot([])[0]
+    axs[0].set_ylabel("Net Position Value", fontsize=25)
+
+    bot_plot = axs[1].plot([])[0]
+    axs[1].set_xlabel("Minutes from Open", fontsize=25)
+    axs[1].set_ylabel("S&P 500 Price", fontsize=25)
+
+    # Limiting range of plots
+    x_min, x_max = -10, 410
+    axs[0].set_xlim(x_min, x_max) 
+    axs[1].set_xlim(x_min, x_max)
+
+    y_range = max(value_of_investment) - min(value_of_investment)
+    axs[0].set_ylim(min(value_of_investment) - 0.1 * y_range, max(value_of_investment) + 0.1 * y_range)
+
+    y_range = max(prices) - min(prices)
+    lowest_rel_value = min(min(prices), prices[0] * (1 - y_percent_gain))
+    highest_rel_value = max(max(prices), prices[0] * (1 + y_percent_gain))
+    y_min = lowest_rel_value - 0.2 * y_range
+    y_max = highest_rel_value + 0.2 * y_range
+    axs[1].set_ylim(y_min, y_max)
+
+    fig.suptitle('Single Day Simulation', fontsize=25, x=0.60, y=0.98)
+
+    # Start making line labels
+    x_range = x_max - x_min
+    y_range = y_max - y_min
+    text_x_pos = x_max - 0.025 * x_range
+    height_above_line = y_range * 0.04
+    line_labels = {}
+    line_labels['initial_short_stop'] = axs[1].text(text_x_pos, 
+                    prices[0] * (1 - x_percent_loss) + height_above_line,
+                    'Short Stop-Loss', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+    line_labels['initial_long_stop'] = axs[1].text(text_x_pos, 
+                    prices[0] * (1 + x_percent_loss) + height_above_line,
+                    'Long Stop-Loss', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+
+    # Make initial stop loss horizontal lines
+    initial_short_stop = axs[1].axhline(y=prices[0] * (1 - x_percent_loss), color='tab:orange', linestyle='--')
+    initial_long_stop = axs[1].axhline(y=prices[0] * (1 + x_percent_loss), color='tab:orange', linestyle='--')
+
+    # Setup be_threshold line
+    if prices[first_position_exit] < prices[0]:
+        be_threshold_line = axs[1].axhline(y=prices[0] * (1 - be_threshold), color='tab:purple', linestyle='--')
+        line_labels['be_threshold'] = axs[1].text(text_x_pos, 
+                    prices[0] * (1 - be_threshold) + height_above_line,
+                    'Break Even Threshold', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+    else:
+        be_threshold_line = axs[1].axhline(y=prices[0] * (1 + be_threshold), color='tab:purple', linestyle='--')
+        line_labels['be_threshold'] = axs[1].text(text_x_pos, 
+                prices[0] * (1 + be_threshold) + height_above_line,
+                'Break Even Threshold', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+    be_threshold_line.set_visible(False)
+    line_labels['be_threshold'].set_visible(False)
+
+    # Setup take profit line
+    if prices[first_position_exit] < prices[0]:
+        tp_line = axs[1].axhline(y=prices[0] * (1 - y_percent_gain), color='green', linestyle='--')
+        line_labels['tp'] = axs[1].text(text_x_pos, 
+                prices[0] * (1 - y_percent_gain) + height_above_line,
+                'Short Take-Profit', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+    else:
+        tp_line = axs[1].axhline(y=prices[0] * (1 + y_percent_gain), color='green', linestyle='--')
+        line_labels['tp'] = axs[1].text(text_x_pos, 
+                prices[0] * (1 + y_percent_gain) + height_above_line,
+                'Long Take-Profit', fontsize=12, color='gray', verticalalignment='center', horizontalalignment='right')
+    tp_line.set_visible(False)
+    line_labels['tp'].set_visible(False)
+
+    plt.tight_layout()
+    plt.subplots_adjust(hspace=0)                
+
+    def AnimationFunction(frame):
+
+        top_plot.set_data((x[0:frame], value_of_investment[0:frame]))
+        bot_plot.set_data((x[0:frame], prices[0:frame]))
+        
+        # Position exits
+        if frame == first_position_exit+1:
+            axs[1].axvline(x = first_position_exit, color = 'gray', dashes=[2,2])
+            if prices[first_position_exit] < prices[0]:
+                initial_long_stop.set_visible(False)
+                line_labels['initial_long_stop'].set_visible(False)
+            else:
+                initial_short_stop.set_visible(False)
+                line_labels['initial_short_stop'].set_visible(False)
+            be_threshold_line.set_visible(True)
+            line_labels['be_threshold'].set_visible(True)
+
+        # Managing be_threshold
+        if be_trigger and frame == be_trigger+1:
+            if prices[first_position_exit] < prices[0]:
+                initial_short_stop.set_ydata((prices[0] * (1 + x_percent_loss)))
+                line_labels['initial_short_stop'].set_position((text_x_pos, prices[0] * (1 + x_percent_loss) + height_above_line))
+            else:
+                initial_long_stop.set_ydata((prices[0] * (1 - x_percent_loss)))
+                line_labels['initial_long_stop'].set_position((text_x_pos, prices[0] * (1 - x_percent_loss) + height_above_line))
+            be_threshold_line.set_visible(False)
+            line_labels['be_threshold'].set_visible(False)
+            tp_line.set_visible(True)
+            line_labels['tp'].set_visible(True)
+
+        # Trailing Stop Losses
+        if sl_positions and frame in sl_positions[0]:
+            tp_line.set_visible(False)
+            line_labels['tp'].set_visible(False)
+            if prices[first_position_exit] < prices[0]:
+                initial_short_stop.set_ydata((sl_positions[1][sl_positions[0].index(frame)]))
+                line_labels['initial_short_stop'].set_position((text_x_pos, sl_positions[1][sl_positions[0].index(frame)] + height_above_line))
+            else:
+                initial_long_stop.set_ydata((sl_positions[1][sl_positions[0].index(frame)]))
+                line_labels['initial_long_stop'].set_position((text_x_pos, sl_positions[1][sl_positions[0].index(frame)] + height_above_line))
+        
+        # 2nd position exit line
+        if frame == second_position_exit+1:
+            axs[1].axvline(x = second_position_exit, color = 'gray', dashes=[2,2])
+
+    anim_created = FuncAnimation(fig, AnimationFunction, frames=frames, interval=interval)
+    video = anim_created.to_html5_video()
+    html = display.HTML(video)
+    display.display(html)
+
+    plt.close()
+```
+
+
+```
+animate_simulation(market_day = 4)
+```
+
+<p align="center">
+  <video width="426" height="640" controls>
+  <source src="../img/posts/Images_LongShortPost/MoreComplexSimulation_1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+</p>
+
+```
+animate_simulation(market_day = 32, 
+                   x_percent_loss = -0.2 / 100, 
+                   y_percent_gain = 0.8 / 100, 
+                   be_threshold = 0.4 / 100, 
+                   tslp = 0.3 / 100,
+                   frames = 390,
+                   interval = 75)
+```
+
+<p align="center">
+  <video width="426" height="640" controls>
+  <source src="../img/posts/Images_LongShortPost/MoreComplexSimulation_2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+</p>
 
 
 
