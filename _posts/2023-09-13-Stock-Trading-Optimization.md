@@ -1507,8 +1507,11 @@ plt.show()
 The results of the converged optimization are above. Please excuse the color choices and text sizing, I'm just using the built in PyGAD plotting functions. We can see that the GA has more or less converged with an optimal fitness score of 0.6. The genes are ordered the same as the parameters: 
 
 Gene 0 -> x_percent_loss
+
 Gene 1 -> y_percent_gain
+
 Gene 2 -> be_threshold
+
 Gene 3 -> tslp
 
 A few interesting things jump out.
@@ -1626,3 +1629,195 @@ plt.show()
 
 ![OpVsUnopstats](../img/posts/Images_LongShortPost/OpVsUnopstats.png)
 
+
+The above plot compares the performance across 100 random runs using our old and newly opimized paraterms. Looking at this, we can confidently say that the optimzation with the GA was successful! **The average yearly return increased by 2.5%** (~10% to ~12.5%) compared to our unoptimized values that we started with. This gives an alpha of about 2.5% compared to the benchmark of 10% annually. The average maximum drawdown and average longest drawdown also decreased significantly. In this case if we use the standard S&P 500 as a benchmark, this algorithm is blowing it out of the water. The advantage of using both long and short positions means that we are much more resistant steep declines due to recessions, because we remain profitable as long a the price action does not become stagnant.
+
+Before we wrap up, it would be helpful to try to understand *why* these more extreme parameters that the GA found give us more favorable results. Let's look back at our dataset and see if we can learn the same lessons the GA did.
+
+```
+def calculate_day_results(report, x_percent_loss, y_percent_gain):
+    """ Calculate the number of loosing, breakeven, and winning days as well as the return:risk ratio"""
+    
+    balance = report["Balance"]
+
+    day_results = []
+    returns = []
+    for key, day in enumerate(balance):
+        if key == 0:
+            continue
+        else:
+            ppc = (day - balance[key-1]) / balance[key-1]
+            if ppc > y_percent_gain:
+                day_results.append(3) # Take Profit Hit
+            
+            if round(day, 6) > round(balance[key-1], 6):
+                day_results.append(2) 
+            elif round(day, 6) == round(balance[key-1], 6):
+                day_results.append(1)
+            else:
+                day_results.append(0)
+            returns.append(ppc)
+
+    # Count the occurrences of each number
+    count_0 = day_results.count(0)
+    count_1 = day_results.count(1)
+    count_2 = day_results.count(2)
+    count_3 = day_results.count(3)
+
+    avg_rr = round(np.mean(np.asarray(returns)) / x_percent_loss * -1, 3)
+
+    return count_0, count_1, count_2, count_3, avg_rr
+
+random_seed = 5
+day_num = len(market_by_days)
+starting_balance = 2000
+
+x_percent_loss = -0.2 / 100  # x percent loss threshold
+y_percent_gain = 0.5 / 100  # y percent gain threshold
+be_threshold = 0.3 / 100 # breakeven threshold
+tslp = 0.2 / 100 # trailing stop loss percentage
+
+report = my_algorithm(random_seed, day_num, starting_balance, x_percent_loss, y_percent_gain, be_threshold, tslp)
+count_0, count_1, count_2, count_3, top_avg_rr = calculate_day_results(report, x_percent_loss, y_percent_gain)
+
+values_top = [round(count_0 / day_num, 6), 
+              round(count_1 / day_num, 6), 
+              round(count_2 / day_num, 6),
+              round(count_3 / day_num, 6)]
+
+
+x_percent_loss = converged_solution[0] / 100  # x percent loss threshold
+y_percent_gain = 100 * converged_solution[1]  / 100  # y percent gain threshold
+be_threshold = converged_solution[2]  / 100 # breakeven threshold
+tslp = converged_solution[3] / 100 # trailing stop loss percentage
+
+report = my_algorithm(random_seed, day_num, starting_balance, x_percent_loss, y_percent_gain, be_threshold, tslp)
+count_0, count_1, count_2, count_3, bot_avg_rr = calculate_day_results(report, x_percent_loss, y_percent_gain)
+
+values_bot = [round(count_0 / day_num, 6), 
+              round(count_1 / day_num, 6), 
+              round(count_2 / day_num, 6),
+              round(count_3 / day_num, 6)]
+
+```
+
+<br>
+
+```
+fig, axs = plt.subplots(2, 1, figsize=(5, 8), sharex=True)
+
+red_pastel = sns.color_palette("pastel")[3]
+orange_pastel = sns.color_palette("pastel")[1]
+green_pastel = sns.color_palette("pastel")[2]
+new_pastel = sns.color_palette("pastel")[4]
+palette = [red_pastel, orange_pastel, green_pastel, new_pastel]
+
+categories = ['Losing\nDays', 'Break-even\nDays', 'Winning\nDays', 'Take-Profit\nHit Days']
+
+
+axs[0].bar(categories, values_top, color = palette)
+axs[1].bar(categories, values_bot, color = palette)
+
+for i, value in enumerate(values_top):
+    axs[0].text(i, value, "{:.3f}".format(value), ha='center', va='bottom')
+for i, value in enumerate(values_bot):
+    axs[1].text(i, value, "{:.3f}".format(value), ha='center', va='bottom')
+
+axs[0].set_title('Unoptimized Parameters')
+axs[1].set_title('Optimized Parameters')
+
+axs[0].text(0.96, 0.9, f'(Avg. Return %) / Risk % = {top_avg_rr}', transform=axs[0].transAxes, fontsize=12, ha='right',
+            bbox={'facecolor': 'white', 'edgecolor': 'black', 'boxstyle': 'round'})
+axs[1].text(0.96, 0.9, f'(Avg. Return %) / Risk % = {bot_avg_rr}', transform=axs[1].transAxes, fontsize=12, ha='right',
+            bbox={'facecolor': 'white', 'edgecolor': 'black', 'boxstyle': 'round'})
+
+axs[1].set_yticks([0, 0.2, 0.4, 0.6, 0.8])
+
+
+xtick_positions = range(len(categories))
+xtick_labels = categories
+
+for ax in axs:
+    ax.set_xticks(xtick_positions)
+    ax.set_xticklabels(xtick_labels, ha='center')
+    ax.set_ylabel('Percentage', fontsize=20)
+    ax.set_ylim(0, 1.0)
+
+plt.subplots_adjust(hspace=0.2)
+plt.show()
+```
+
+![OpVsUnopstats](../img/posts/Images_LongShortPost/OpVsUnopstats.png)
+
+```
+# Initialize counters
+max_opening_price_count = 0
+min_opening_price_count = 0
+
+returns = []
+
+# Iterate through the list of dataframes
+for df in market_by_days:
+    # Get the opening and closing price for each day
+    opening_price = df.iloc[0]['average']
+    closing_price = df.iloc[-1]['average']
+    
+    # Find the maximum and minimum values for the day
+    max_average = df['average'].max()
+    min_average = df['average'].min()
+    
+    # Check if the opening price is the max or min for the day
+    if opening_price == max_average:
+        max_opening_price_count += 1
+        ppc = np.abs((closing_price - opening_price) / opening_price)
+        returns.append(ppc * 100)
+    elif opening_price == min_average:
+        min_opening_price_count += 1
+        ppc = np.abs((closing_price - opening_price) / opening_price)
+        returns.append(ppc * 100)
+
+avg_ppc = np.asarray(returns).mean()
+
+print("Days where opening price is the maximum for the day:", round(max_opening_price_count, 5))
+print("Days where opening price is the minimum for the day:", round(min_opening_price_count, 5))
+print("Percentage of days where opening price is the maximum for the day:", round(max_opening_price_count / len(market_by_days) * 100, 5))
+print("Percentage of days where opening price is the minimum for the day:", round(min_opening_price_count / len(market_by_days) * 100, 5))
+print("Avg PPC of days where opening price is a min or max for the day", round(avg_ppc, 5))
+```
+    Days where opening price is the maximum for the day: 180
+    Days where opening price is the minimum for the day: 249
+    Percentage of days where opening price is the maximum for the day: 5.4678
+    Percentage of days where opening price is the minimum for the day: 7.56379
+    Avg PPC of days where opening price is a min or max for the day 0.77103
+
+There is a classic saying, "time in the market beats timing the market". What this means is that trying to guess a high or low is often worse than just holding an asset and riding the waves. This is because (a) most people have no idea where a high or low is going to be, and (b) missing the big jump days means that you may have missed out on the best returns of the year. 
+
+What the GA has discovered is something I probably should of myself during the data mining stage, which is that the days where the opening price is the high or low of the day are relatively rare (only 13% of all trading days in our dataset) but have an average return of 0.77%. If we had allowed the GA to continue for another 20 generations, it would probably have arrived at an even smaller initial stop loss. The theoretical limit here is a trading algorithm which takes the tiniest possible loss most days, at the cost of having some skin in the game such that on those 13% of days when the opening is a daily high or low it is able to take advantage of that swing. In essence, the take-profit, break-even threshold, and trailing stop loss don't matter anymore, it all comes down to the initial stop loss. In many ways it is a much simpler trading algorithm this way, and it takes full advantage of the underlying statistics using a strategy with incredibly small losses and large but infrequent gains. 
+
+## Section 5: Conclusion
+
+We used data mining to identify a viable trading strategy, implemented it, and then optimized the parameters of our strategy using a genetic algorithm. It turns out that our strategy was more complicated than necessary, and the optimal approach revealed by the GA was simply to take losses as quickly as possible and let winning trades run as long as possible. In retrospect, this follows the advice that is common in day trading forums "cut your losses quickly and let your winners run". It's possible that a more volatile asset might benefit from the added safety rails that the our trading algorithm has, but for the S&P 500 they seem to be more of a hinderance than a benefit. All that being said, the simple approach taking both a long and short position at the start of every day, setting both with a very tight stop loss, and selling everything at the end of the day results in a respectable amount of alpha with minimal drawdowns. 
+
+### Caveats and Future Directions
+
+This little project may not seem like much, but it was actually very fun, and it took quite a bit of time. I spent most of it learning about genetic algorithms and tweaking my own to improve its efficiency and convergence rate. This was also my first time dipping my toe into the world of algorithmic trading (even though nothing actually got implemented in the real world) and I admit that I was thoroughly humbled by just how deep this field is. Now that I'm at the end of this project, if I was to ever do a 2.0 version of it, there are so many more things I would want to consider. 
+
+#### Slippage
+Every algorithm needs to have some way of accounting for slippage, which is the difference between the intended execution price and the actual execution price. This can be brought on by order execution delays, lack of liquidity, and super high volatility. The last one especially matters for us given that we depend a lot on volatility (or at least the safety rails on our algorithm do). As of right now, there is no slippage included in our model and every trade is expected to be executed immediately at the stop loss value. This is probably why the GA ended up having such a small stop loss value, because it allowed for the most extreme version of minimizing drawdown. In reality, even a stop loss of -0.01 % is not always viable. This also leads to the next point.
+
+#### Order Book
+A more realistic simulation would be to actually use an order book which controls how many buy or sell orders are active at any given time. This would help with simulating slippage and would also help avoid the GA optimizing for incredibly tiny stop loss values because they would never get filled.
+
+#### Tick Sizes
+Stocks do not trade out to the 6th decimal place. They tend to have a set precision that they go to, which for most is $0.01. Again, this also ties back to slippage, but also complicates the phase space of our algorithm. The parameters, which are currently all done in terms of percentages, would need to be converted to dollar amounts with penny precision. Arguably this could be as simple as rounding, but this means that slightly different input parameters will lead to identical outputs, and this can have adverse effects on optimization algorithms.
+
+#### Minute Averages
+Using averages was a convenient but pretty rough approximation of true market conditions. It doesn't account for high volume swings in one direction or another which may cause a position to stop out. The way to address this would either be to encode the range of values more explicitly or trade on smaller timeframes. The latter option would require getting more serious about sourcing our historical data and would also dramatically increase the amount of time the simulation takes to run. If I were to do this project again, I would need to do some more research about how other algorithmic trading strategies take into account entire candles.
+
+#### Other Trading Timeframes
+So far, we've only exploited the opening of the trading day. The PPC plot on 30 minute and 1 hour timeframes that we made near the beginning showed that there were pretty strong market swings near the end of the day as well (this is not new information, it's just nice to be able to see it myself). A more sophisticated algorithm might be able to take advantage both of the open and the last 1 hour by using the money from the stopped out position to open up another long-short pair at the 15:00:00 mark. This extra complexity may also lead to a more interesting optimization result.
+
+#### Higher Volatility Tickers
+We have focused exclusively on the S&P 500 for the time being, which is all well and good, but a more volatile asset such as VIX may be able to provide even higher returns. I suspect that the plain old S&P 500 may not really have the necessary daily volatility for this algorithm to cut its teeth on.
+
+That's all I've got! Thanks for reading, and if you have any feedback feel free to reach out to me through the CONTACT tab on the top ribbon.
