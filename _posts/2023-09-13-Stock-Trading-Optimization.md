@@ -1747,7 +1747,7 @@ plt.subplots_adjust(hspace=0.2)
 plt.show()
 ```
 
-![OpVsUnopstats](../img/posts/Images_LongShortPost/OpVsUnopstats.png)
+![DayPerformance](../img/posts/Images_LongShortPost/DayPerformance.png)
 
 ```
 # Initialize counters
