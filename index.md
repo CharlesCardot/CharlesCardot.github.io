@@ -24,7 +24,7 @@ I am currently pursuing a PhD in Condensed Matter Physics at The University of W
 I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ect) and Mathematica for data analysis, with some moderate use of Lua and C++ for scripting and development of new electronic structure software. In all aspects of my work, I focus on clear and thorough representation of data, with significant effort being put towards finding interesting ways of visualizing information to better tell a complete story.
 
 
-[![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1fsOaab3c4haMMhU3N1OT4449ScbG-2KK/edit?usp=share_link&ouid=104204760268694891005&rtpof=true&sd=true)
+[![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1lHxfmSX1PU9dKj2fNatlE3YdyXocE2R5/edit?usp=drive_link&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ### Publications
 - **Submitted**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://arxiv.org/abs/2304.14582
