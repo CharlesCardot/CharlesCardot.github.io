@@ -30,7 +30,10 @@ I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ec
 - **Submitted**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://arxiv.org/abs/2304.14582
 - **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*
 
-### Conferences and Talks
+### Conferences, Summer Schools, and Talks
+- Summer School (2023): *Spectroscopy and Electronic Structure of Transition Metal Complexes*, [School Link](https://www.cec.mpg.de/en/detail-view/summer-school-spectroscopy-and-electronic-structure-of-transition-metal-complexes), [Poster](https://drive.google.com/file/d/1bW2QurNU4GyWK1I5sSv_nRxpTRdKLxgw/view?usp=drive_link), was one of 3 selected for the [*Best Poster*](https://drive.google.com/file/d/1QQYOkNYsugRaBhkXGR0yTrPD0qKNpXJk/view?usp=drive_link)
+- APS March Meeting (2023): *Nearly ab-inito MLFT applied to Kalpha XES of 3d transition metal systems*, [Recorded Talk](https://youtu.be/AekHwO6IBmw)
+- Summer School (2022): *International Summer School on Computational Quantum Materials* [School Link](https://pitp.phas.ubc.ca/confs/sherbrooke2022/index.html)
 - APS March Meeting (2022): *Exploration of ab-initio calculations of 3d transition metal K-alpha X-ray Emission Spectroscopy*, [Recorded Talk](https://www.youtube.com/watch?v=QeKPRC6n01w)
 - XAFS Conference (2021): *The XAS Resource Workbook (XAS-RW): An Open-Source Instructional Guide for New XAS Users*, [Recorded Talk](https://www.youtube.com/watch?v=4OpNQ1lUFVE) 
 - APS March Meeting (2021): *Cumulant Green's function calculations of the asymmetry of 4f_7/2 peaks in the XPS of Au and Pt*, [Slide Deck](https://1drv.ms/p/s!AvWklJa15PD-gjiT-872iVU1o2EH?e=8Nvnuj)
