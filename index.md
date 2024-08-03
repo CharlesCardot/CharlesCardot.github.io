@@ -27,8 +27,9 @@ I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ec
 [![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1lHxfmSX1PU9dKj2fNatlE3YdyXocE2R5/edit?usp=drive_link&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ### Publications
-- **Submitted**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://arxiv.org/abs/2304.14582
-- **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*
+- **Under Preparation**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Prediction and Measurement of Resonant and Nonresonant Shake Effects in the Core-level X-ray Emission Spectra of 3d0 Transition Metal Compounds*
+- **Journal Article**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://doi.org/10.1016/j.elspec.2024.147419
+- **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*, https://doi.org/10.1103/PhysRevB.104.245131
 
 ### Conferences, Summer Schools, and Talks
 - Summer School (2023): *Spectroscopy and Electronic Structure of Transition Metal Complexes*, [School Link](https://www.cec.mpg.de/en/detail-view/summer-school-spectroscopy-and-electronic-structure-of-transition-metal-complexes), [Poster](https://drive.google.com/file/d/1bW2QurNU4GyWK1I5sSv_nRxpTRdKLxgw/view?usp=drive_link), was one of 3 selected for the [*Best Poster*](https://drive.google.com/file/d/1QQYOkNYsugRaBhkXGR0yTrPD0qKNpXJk/view?usp=drive_link)
