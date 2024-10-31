@@ -44,7 +44,7 @@ subtitle: My CV but fancier
 
 **Electronic Structure Codes:** ![FPLO](https://img.shields.io/badge/markdown-proficient-success) ![Siesta](https://img.shields.io/badge/Siesta-intermediate-green) ![Abinit](https://img.shields.io/badge/Abinit-intermediate-green) ![FEFF](https://img.shields.io/badge/FEFF-novice-yellow) ![OCEAN](https://img.shields.io/badge/OCEAN-novice-yellow)
 
-**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![ORCA](https://img.shields.io/badge/NWChem-novice-yellow)
+**Quantum Chemistry Codes:** ![Quanty](https://img.shields.io/badge/Quanty-proficient-success) ![NWChem](https://img.shields.io/badge/NWChem-novice-yellow) ![ORCA](https://img.shields.io/badge/ORCA-novice-yellow)
 
 **Other:** ![Wannier90](https://img.shields.io/badge/Wannier90-novice-yellow)
 
