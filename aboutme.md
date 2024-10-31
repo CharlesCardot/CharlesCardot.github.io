@@ -5,7 +5,7 @@ subtitle: My CV but fancier
 ---
 
 (My Actual CV)
-[![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1lHxfmSX1PU9dKj2fNatlE3YdyXocE2R5/edit?usp=drive_link&ouid=104204760268694891005&rtpof=true&sd=true)
+[![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1kkstTDyYrDNx06LGMFckyitwLFeh-uIi/edit?usp=sharing&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ## Contents
 
