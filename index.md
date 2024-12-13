@@ -12,6 +12,7 @@ cover-img:
     - "/img/big-img/quanty_code_snippet.png" : "Quanty Code Snippet"
     - "/img/big-img/crystalanalyzer_reflection_energies_pythonXRT.png" : "Johann Error in Python XRT"
     - "/img/big-img/xraytracingwithpythonxrt.png" : "X-ray Tracing with Python XRT"
+    - "/img/big-img/DyNiC2_electron_density.png" : "DyNiC2 Electron Density"
 ---
 
 ### Welcome
