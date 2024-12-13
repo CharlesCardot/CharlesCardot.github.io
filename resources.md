@@ -10,6 +10,8 @@ subtitle: Potentially useful resources that I've collected over the years
 * X-ray Spectroscopy:
   * [X-ray Data Booklet](https://xdb.lbl.gov/) - Binding Energies, Emission Energies, Subshell Cross-Sections, almost too much info to list
   * [Center for X-ray Optics](https://henke.lbl.gov/optical_constants/) - X-ray Interactions with Matter (Transmission, Reflectivity, attenuation length, ect) 
+  * [The International XPS Database](https://xpsdatabase.net/) - 5-10 X-ray Photoemission Spectra for most elements on the peridic table and many of their compounds
+  * [International XAFS Database](https://ixdb.jxafs.org/) - Over 3000 X-ray Absorption Spectra organized by element and absorption edge. Pulls spectra from many other localized databases.
 * Crystal Structures:
   * [Materials Project](https://materialsproject.org/) - Giant compendium of results from automated calculations (Band Structure, XANES, EXAFS) across crystal structures, as well as just a fast and easy place to spin around a crystal in 3D.
   * [Crystallography Open Database](http://www.crystallography.net/cod/) - Many crystalographic information files (CIFs). All materials are real.
@@ -24,6 +26,9 @@ subtitle: Potentially useful resources that I've collected over the years
     * [FPLO](https://www.fplo.de/) - Full-potential local-orbital, minimal basis set, comparable accuracy to LAPW
     * [RSPt](https://www.physics.uu.se/research/materials-theory/ongoing-research/code-development/rspt-main/) - Full-potential Linear Muffin-Tin Orbital, beyond DFT methods DFT+U and DFT+DMFT
   * [Quanty](https://quanty.org/) - 2nd quantization multiplet code, written in C/C++, but has a scripting language written in Lua. It focuses on tools to solve the mathematics of quantum mechanics so you can focus on the physics.
+  * [CTM4XAS](https://anorg.chem.uu.nl/CTM4XAS/software.html) - Similar to Quanty, but only interface is through a GUI, good for beginnners in the world of Multiplet Ligand Field Theory.
+  * [MISSING](https://www.esrf.fr/computing/scientific/MISSING/) - Multiplet Inner-Shell Spectroscopy INteractive GUI (MISSING) provides a user interface for the famous "Cowan's Code" for performing atomic multiplet calculations.
+  * [Gaussian](https://gaussian.com/) A very robust molecular quantum chemistry code with Hartree-Fock, DFT, and RASSCF capabilities. Also includes many tools for molecule building and visualizing outputs.
 * X-ray Spectra Analysis
   * [Demeter Suite (Athena, Artemis, and Hephaestus)](https://bruceravel.github.io/demeter/) - Used for processing (background subtraction, Fourier transforming) and fitting of XAS data
   * [X-ray Larch](https://xraypy.github.io/xraylarch/) - Python based data analysis tool for processing XAS data with capabilities for visualizing multiple other types of spectroscopy (XRF, RIXS)
