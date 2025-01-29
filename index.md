@@ -27,7 +27,9 @@ I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ec
 [![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1kkstTDyYrDNx06LGMFckyitwLFeh-uIi/edit?usp=sharing&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ### Publications
-- **Under Preparation**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Prediction and Measurement of Resonant and Nonresonant Shake Effects in the Core-level X-ray Emission Spectra of 3d0 Transition Metal Compounds*
+- **Under Preparation** J. E. Abramson, <u>C. A. Cardot</u>, J. J. Kas, J. J. Rehr, G. T. Seidler, *Polarization dependent emission of 3d0 Transition Metals*
+- **Journal Article**: K. Ackermann, K. Arnold, M. Braß, <u>C. Cardot</u>, R. Green, S. Heinze, P. Hill, Y. Lu, S. Macke, M. Retegan, S. Shokri, M. Tagliavini, A. Zacinskis, M. W. Haverkort, *QUANTY, a quantum many-body scripting toolkit*, https://www.scipost.org/preprints/scipost_202412_00045v1/
+- **Journal Article**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Prediction and Measurement of Resonant and Nonresonant Shake Effects in the Core-level X-ray Emission Spectra of 3d0 Transition Metal Compounds*, https://doi.org/10.1021/acs.jpclett.4c02583
 - **Journal Article**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://doi.org/10.1016/j.elspec.2024.147419
 - **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*, https://doi.org/10.1103/PhysRevB.104.245131
 
