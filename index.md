@@ -28,13 +28,15 @@ I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ec
 [![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1kkstTDyYrDNx06LGMFckyitwLFeh-uIi/edit?usp=sharing&ouid=104204760268694891005&rtpof=true&sd=true)
 
 ### Publications
-- **Under Preparation** J. E. Abramson, <u>C. A. Cardot</u>, J. J. Kas, J. J. Rehr, G. T. Seidler, *Polarization dependent emission of 3d0 Transition Metals*
+- **Under Preparation** J. E. Abramson<sup>‡</sup>, <u>C. A. Cardot</u><sup>‡</sup>, J. J. Kas, J. J. Rehr, W. Kaminsky, H. Michor, M. Roman, G. T. Seidler, *X-ray Emission Spectropolarimetry of Strongly Anisotropic Single Crystal Systems using a Rowland Circle Geometry*, ‡These authors contributed equally to this work
 - **Journal Article**: K. Ackermann, K. Arnold, M. Braß, <u>C. Cardot</u>, R. Green, S. Heinze, P. Hill, Y. Lu, S. Macke, M. Retegan, S. Shokri, M. Tagliavini, A. Zacinskis, M. W. Haverkort, *QUANTY, a quantum many-body scripting toolkit*, https://www.scipost.org/preprints/scipost_202412_00045v1/
 - **Journal Article**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Prediction and Measurement of Resonant and Nonresonant Shake Effects in the Core-level X-ray Emission Spectra of 3d0 Transition Metal Compounds*, https://doi.org/10.1021/acs.jpclett.4c02583
 - **Journal Article**: <u>C. A. Cardot</u>, J. J. Kas, J. E. Abramson, J. J. Rehr, G. T. Seidler, *Core-to-Core X-ray Emission Spectra from Wannier Based Multiplet Ligand Field Theory*, https://doi.org/10.1016/j.elspec.2024.147419
 - **Journal Article:** (2022) J. C. Woicik, E. L. Shirley, C. Weiland, A. K. Rumaiz, <u>C. A. Cardot</u>, J. J. Kas, and J. J. Rehr, *Noble-metal dark-edge fermiology: Centrifugal barriers, core-hole memory, and the Zeeman Auger effect*, https://doi.org/10.1103/PhysRevB.104.245131
 
 ### Conferences, Summer Schools, and Talks
+- PhD Defense (2025), *Polarization Dependence in the X-ray Emission of 3d Transition Metal Systems*, [Recorded Talk](https://youtu.be/V8LV8pPcK9o)
+- ANL (2025): *Nearly ab-initio MLFT applied to Kα XES of 3d transition metal systems*, [Recorded Talk](https://youtu.be/jG24aYVTtqE)
 - Summer School (2023): *Spectroscopy and Electronic Structure of Transition Metal Complexes*, [School Link](https://www.cec.mpg.de/en/detail-view/summer-school-spectroscopy-and-electronic-structure-of-transition-metal-complexes), [Poster](https://drive.google.com/file/d/1bW2QurNU4GyWK1I5sSv_nRxpTRdKLxgw/view?usp=drive_link), was one of 3 selected for the [*Best Poster*](https://drive.google.com/file/d/1QQYOkNYsugRaBhkXGR0yTrPD0qKNpXJk/view?usp=drive_link)
 - APS March Meeting (2023): *Nearly ab-inito MLFT applied to Kalpha XES of 3d transition metal systems*, [Recorded Talk](https://youtu.be/AekHwO6IBmw)
 - Summer School (2022): *International Summer School on Computational Quantum Materials* [School Link](https://pitp.phas.ubc.ca/confs/sherbrooke2022/index.html)
