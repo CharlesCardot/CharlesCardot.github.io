@@ -24,19 +24,6 @@ I am currently pursuing a PhD in Condensed Matter Physics at The University of W
 
 I work extensively with Python (numpy, scipy, pandas, matplotlib, tensorflow, ect) and Mathematica for data analysis, with some moderate use of Lua and C++ for scripting and development of new electronic structure software. In all aspects of my work, I focus on clear and thorough representation of data, with significant effort being put towards finding interesting ways of visualizing information to better tell a complete story.
 
-<button id="colorButton" onclick="toggleColor()">Click me</button>
-
-<script>
-  function toggleColor() {
-    const btn = document.getElementById("colorButton");
-    if (btn.style.backgroundColor === "blue") {
-      btn.style.backgroundColor = "";
-    } else {
-      btn.style.backgroundColor = "blue";
-    }
-  }
-</script>
-
 
 [![CV](https://img.shields.io/badge/Download-my%20CV-lightgrey?style=for-the-badge)](https://docs.google.com/document/d/1kkstTDyYrDNx06LGMFckyitwLFeh-uIi/edit?usp=sharing&ouid=104204760268694891005&rtpof=true&sd=true)
 
