@@ -39,7 +39,7 @@ navbar-links:
 
 
 # For building future blog posts
-# future: true
+future: true
 
 ################
 # --- Logo --- #
