@@ -19,6 +19,15 @@ Blah blah blah
 <pre id="output"></pre>
 
 <script>
+function generateTag(length = 8) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let tag = '';
+  for (let i = 0; i < length; i++) {
+    tag += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return tag;
+}
+
 document.getElementById("upload-form").addEventListener("submit", async function(event) {
   event.preventDefault();
 
@@ -42,7 +51,8 @@ document.getElementById("upload-form").addEventListener("submit", async function
     const content = e.target.result;
     const filename = file.name;
 
-    const ntfyMessage = `📦 File received: ${filename}\n\n${content}`;
+    const tag = generateTag();
+    const ntfyMessage = `🔖 Tag: ${tag}\n📦 File received: ${filename}\n\n${content}`;
 
     try {
       const res = await fetch("https://ntfy.sh/polarized-xes-upload", {
@@ -55,7 +65,10 @@ document.getElementById("upload-form").addEventListener("submit", async function
         throw new Error("ntfy error: " + res.statusText);
       }
 
-      document.getElementById("output").textContent = "✅ File sent to ntfy!";
+      document.getElementById("output").textContent = `✅ File sent with tag ${tag}! Waiting for response...`;
+
+      // Start SSE listener for response
+      listenForResponse(tag);
     } catch (err) {
       document.getElementById("output").textContent = "❌ Error: " + err.message;
     }
@@ -67,4 +80,22 @@ document.getElementById("upload-form").addEventListener("submit", async function
 
   reader.readAsText(file);
 });
+
+function listenForResponse(tag) {
+  const source = new EventSource("https://ntfy.sh/polarized-xes-response/sse");
+
+  source.addEventListener("message", function(event) {
+    const message = event.data;
+
+    if (message.includes(`Tag: ${tag}`)) {
+      document.getElementById("output").textContent = `📬 Response for tag ${tag}:\n\n${message}`;
+      source.close();  // Stop listening after receiving the match
+    }
+  });
+
+  source.addEventListener("error", function(err) {
+    console.error("❌ SSE error:", err);
+    source.close();
+  });
+}
 </script>
