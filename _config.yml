@@ -30,6 +30,7 @@ navbar-links:
     - XAS-RW: "xasrw"
     - STEMpals: "stempals"
   Resources: "resources"
+  My Thesis: "thesis"
   Contact: "contact"
   Blog: "blog"
   #Resources:
