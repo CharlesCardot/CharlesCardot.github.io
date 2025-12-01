@@ -80,19 +80,20 @@ subtitle: Potentially useful resources that I've collected over the years
     
 
 ## Graduate School Applications
+* ### Random Literature
   * Getting In to Grad School for Physics: (or another physical science), Vincent Klug, ISBN-13: 978-1499732245 - *Would highly recommend*
   * [Applying to STEM Ph.D. Programs](https://github.com/gwisk/gradguide), George Iskander
   * [Get in to Grad School (General Advice)](https://docs.google.com/document/d/1Hx1L_4YAlQOxll7GBkSMxHfp2wTQMJT5/edit?usp=sharing&ouid=104204760268694891005&rtpof=true&sd=true), Unknown
-  ### Example CV's
-    * [Charles Cardot (2021)](https://drive.google.com/file/d/1VxjD6yLO4nmJDYrTyN2vFZi5PzU5IEL7/view?usp=share_link)
-    * [Dmitriy Kim (2021)](https://drive.google.com/file/d/11cm2e3nHQtuDbk-l1Jyf7NVBvAFVGRR_/view?usp=share_link)
-    * [Jonathan Destefano (2021)](https://drive.google.com/file/d/1if4UwBUyM1JmeqP5zg9iwi4aSyKuNvtJ/view?usp=share_link)
-  ### Example Personal Statements
-    * [Charles Cardot (2020-2021) Various](https://drive.google.com/drive/folders/1GWDzuJlerCClDG_0f1JR2akTs6gGau_I?usp=share_link)
-    * [Dmitriy Kim (2020-2021) University of Michigan](https://drive.google.com/file/d/1scIEhiqds0LBsKycFBQ7Kka6Lj7OWgJJ/view?usp=share_link)
-    * [Jonathan Destefano (2020-2021) Cornell](https://drive.google.com/file/d/1bIjHzJqnTxyjib1TNjrUwLCaZTz4R32f/view?usp=share_link)
-    * [Robin Glefke (2020-2021) Template](https://drive.google.com/file/d/1fVpWfbc4LBix4DJWmeuFul3mpBey36Cb/view?usp=share_link)
-    * [Robin Glefke (2020-2021) Berkley](https://drive.google.com/file/d/1o8GNFzq5EYKKoefvB_QQofbVSMwmW_k0/view?usp=share_link)
-    * [Anonymous (2020-2021) Berkley](https://drive.google.com/file/d/1X-7uVzwiKu7VJcJ866VQ8N7HGZKYHVkk/view?usp=share_link)
-  ### NSFGRFP
-    * [Alex Hunter Lang's Website](https://www.alexhunterlang.com/nsf-fellowship)
+* ### Example CV's
+  * [Charles Cardot (2021)](https://drive.google.com/file/d/1VxjD6yLO4nmJDYrTyN2vFZi5PzU5IEL7/view?usp=share_link)
+  * [Dmitriy Kim (2021)](https://drive.google.com/file/d/11cm2e3nHQtuDbk-l1Jyf7NVBvAFVGRR_/view?usp=share_link)
+  * [Jonathan Destefano (2021)](https://drive.google.com/file/d/1if4UwBUyM1JmeqP5zg9iwi4aSyKuNvtJ/view?usp=share_link)
+* ### Example Personal Statements
+  * [Charles Cardot (2020-2021) Various](https://drive.google.com/drive/folders/1GWDzuJlerCClDG_0f1JR2akTs6gGau_I?usp=share_link)
+  * [Dmitriy Kim (2020-2021) University of Michigan](https://drive.google.com/file/d/1scIEhiqds0LBsKycFBQ7Kka6Lj7OWgJJ/view?usp=share_link)
+  * [Jonathan Destefano (2020-2021) Cornell](https://drive.google.com/file/d/1bIjHzJqnTxyjib1TNjrUwLCaZTz4R32f/view?usp=share_link)
+  * [Robin Glefke (2020-2021) Template](https://drive.google.com/file/d/1fVpWfbc4LBix4DJWmeuFul3mpBey36Cb/view?usp=share_link)
+  * [Robin Glefke (2020-2021) Berkley](https://drive.google.com/file/d/1o8GNFzq5EYKKoefvB_QQofbVSMwmW_k0/view?usp=share_link)
+  * [Anonymous (2020-2021) Berkley](https://drive.google.com/file/d/1X-7uVzwiKu7VJcJ866VQ8N7HGZKYHVkk/view?usp=share_link)
+* ### NSFGRFP
+  * [Alex Hunter Lang's Website](https://www.alexhunterlang.com/nsf-fellowship)

@@ -4,11 +4,7 @@ title: Contact
 subtitle: Want to get in touch?
 ---
 
-Interested in my current research at UW and want talk:
-
-[![UWEmail](https://img.shields.io/badge/EMAIL-ccardot3@uw.edu-lightgrey?style=flat-square)](mailto:ccardot3@uw.edu)
-
-Want to reach out about other topics like my past work or projects:
+Want to reach out about professional topics or past work:
 
 [![Outlook](https://img.shields.io/badge/EMAIL-ccardot@outlook.com-lightgrey?style=flat-square)](mailto:ccardot@outlook.com)
 

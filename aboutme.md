@@ -17,7 +17,7 @@ subtitle: My CV but fancier
 ## Education
 ![PhD](https://img.shields.io/badge/Ph.D.-Physics%20(Condensed%20Matter)-blue?style=flat-square) ![BS](https://img.shields.io/badge/B.S.-Physics-blue?style=flat-square)
 - **Ph.D.** in Physics (Condensed Matter)
-  - 2021 - Present, University of Washington
+  - 2021 - 2025, University of Washington
     - Lab of Gerald T. Seidler ([Lab Page](http://faculty.washington.edu/seidler/index.html)) and John J. Rehr ([Lab Page](http://faculty.washington.edu/jjr/))
     - National Science Foundation Graduate Research Fellowship (awarded in 2022)
     - Miller Physics Scholarship (awarded in 2022)
